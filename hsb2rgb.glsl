@@ -33,18 +33,17 @@ vec3 rgb2hsb(vec3 c){
     h+=float(c.g==high)*((c.b-c.r)*D+2.0);
     h+=float(c.b==high)*((c.r-c.g)*D+4.0);
     h=mod(h,6.0)/6.0;
-    s=high-low;
-    s/=(low+high);
+    
     b=(high+low)*0.5;
+    s=(high-low);
+    s/=b;
     return vec3(h,s,b);
 }
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
-    vec3 test = vec3(0.995,0.854,0.873);
-    //test=rgb2hsb(test);
-    //test=hsb2rgb(test);
-    //test=hsl(test);
-    //gl_FragColor =vec4(test,1.0);
-    //gl_FragColor = vec4(hsl(vec3(mod(u_time,0.0),st.x,1.0-st.y)),1.0);
-    gl_FragColor = vec4(hsl2rgb(vec3(mod(u_time,1.0),st.x,1.0-st.y)),1.0);
+    vec3 test = vec3(0.590,0.308,0.484);
+    test=rgb2hsb(test);
+    test=hsb2rgb(test);
+    gl_FragColor =vec4(test,1.0);
+    //gl_FragColor = vec4(hsb2rgb(vec3(mod(u_time,1.0),st.x,1.0-st.y)),1.0);
 }
