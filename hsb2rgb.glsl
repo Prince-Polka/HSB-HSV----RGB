@@ -8,6 +8,7 @@ precision mediump float;
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
+const vec3 yikes =vec3(0.0,2.0,4.0);
 vec3 hue(float H){
     H*=6.0;
     return clamp(vec3(abs(H-3.)-1.0,2.-abs(H-2.),2.-abs(H-4.)),vec3(0.0),vec3(1.0));
@@ -42,8 +43,8 @@ vec3 rgb2hsl(vec3 c){
     s/=1.0-abs(high+low-1.0);
     return vec3(h,s,l);
 }
-   
-vec3 rgb2hsb(vec3 c){
+//older version
+vec3 rgb2hsb0(vec3 c){
     float low=min(min(c.r,c.g),c.b);
     float high=max(max(c.r,c.g),c.b);
     float D=1.0/(high-low);
@@ -53,9 +54,19 @@ vec3 rgb2hsb(vec3 c){
     h=mod(h,6.0)/6.0;
     return clamp(vec3(h,(high-low)/high,high),vec3(0.0),vec3(1.0));
 }
+//newer version
+vec3 rgb2hsb(vec3 c){
+    float low=min(min(c.r,c.g),c.b);
+    float high=max(max(c.r,c.g),c.b);
+    vec3 foo =((c-c.gbr)/(high-low)+yikes)*vec3(c.b==high,c.r==high,c.g==high);
+    float h=4.0+foo.r+foo.g+foo.b;
+    h=mod(h,6.0)/6.0;
+    return clamp(vec3(h,(high-low)/high,high),vec3(0.0),vec3(1.0));
+}
+
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
-    vec3 test = vec3(0.226,0.355,0.229);
+    vec3 test = vec3(0.820,0.561,0.325);
     test=rgb2hsb(test);
     test=hsb2rgb(test);
     gl_FragColor =vec4(test,1.0);
