@@ -3,4 +3,8 @@ glsl function converting normalized hsb vector to rgb
 
 #rgb2hsb does the opposite  
 
-hsl conversion coming soon
+hsb = hsv  
+
+hsl is different   
+
+hsl conversion coming soon, not working correctly now  
