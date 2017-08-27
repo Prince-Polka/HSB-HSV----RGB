@@ -1,10 +1,6 @@
-# hsb2rgb
-glsl function converting normalized hsb vector to rgb  
+# HSB/HSV <--> RGB
+glsl function converting normalized HSB RGB vectors
 
-#rgb2hsb does the opposite  
+HSB == HSV
 
-hsb = hsv  
-
-hsl is different   
-
-hsl conversion coming soon, not working correctly now  
+HSB != HSL
