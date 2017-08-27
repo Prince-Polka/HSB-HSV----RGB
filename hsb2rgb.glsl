@@ -42,5 +42,5 @@ void main() {
     //gl_FragColor = vec4(hsb2rgb(vec3(mod(u_time,1.0),st.x,1.0-st.y)),1.0);
     //gl_FragColor = vec4(hsb2rgb(vec3(st.x,1.0,1.0)),1.0);
     //gl_FragColor = vec4(hsb2rgb(vec3(mod(u_time,1.0),st.x,1.0)),1.0);
-    gl_FragColor = vec4(hsb2rgb(vec3(natan2(st.xy-.5),length(st.xy-.5)*2.0,1.0)),1.0);
+    gl_FragColor = vec4(hsb2rgb(vec3(natan2(st.xy-.5),length(st.xy-.5)*2.0,mod(u_time,1.0))),1.0);
 }
