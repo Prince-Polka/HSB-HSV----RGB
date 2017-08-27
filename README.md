@@ -1,5 +1,5 @@
 # HSB/HSV <--> RGB
-glsl function converting normalized HSB RGB vectors
+glsl function converting between normalized HSB and RGB vectors
 
 HSB == HSV
 
