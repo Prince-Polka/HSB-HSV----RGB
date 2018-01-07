@@ -1,12 +1,9 @@
 /* not clean but should be branchless */
-
 #define ABS(x)(x*((x>0)*2-1))
-
-/*int clamp(int x,int min, int max){
+int clamp(int x,int min, int max){
 int temp = min*(x<min) + max*(x>max);
 return temp + x * !temp;
-}*/
-#define clamp(val,min,max)(val<min?min:val>max?max:val)
+}
 
 /* shuffle components to meet your needs */
 typedef union color{
