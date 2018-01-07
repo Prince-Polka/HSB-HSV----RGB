@@ -1,8 +1,7 @@
 /*
 tested for all integer inputs in ranges (360,100,100) inclusive  
-88.5 % of inputs give pixel perfect results, 
-11 % off by one (manhattan distance)
-0.5% off by two,
+99.95 % of inputs give pixel perfect results, 
+the rest of by one or two (manhattan distance)
 no input was off by more than 2
 
 Note if porting:
@@ -18,13 +17,10 @@ color hsb2rgb(int H, int S, int V) {
   R = (int)constrain(R, 0, 1020)-1020;
   G = (int)constrain(G, 0, 1020)-1020;
   B = (int)constrain(B, 0, 1020)-1020;
- 
-  S = (S * 51) / 5;
-  V = (V * 51) / 5;
- 
-  R = ((R*S + 1040400)*V)/4161600;
-  G = ((G*S + 1040400)*V)/4161600;
-  B = ((B*S + 1040400)*V)/4161600;
- 
+
+  R = ((R*S+102000)*V)/40000;
+  G = ((G*S+102000)*V)/40000;
+  B = ((B*S+102000)*V)/40000;
+
   return (color)(0xFF000000 | R<<16 | G<<8 | B);
 }
